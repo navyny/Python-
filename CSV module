@@ -1,0 +1,23 @@
+import csv
+
+csv_file = 'book1.csv'    # assigning our file path to a variable
+
+csv_data = open(csv_file) 
+
+print(type(csv_data))     #
+
+print (csv_data.read())   
+
+csv_data.close()
+
+
+
+#With is a "context Handler" in Python
+#Using with block is ..like pre-planning to close it...instead of manually using close()
+
+
+with open("book1.csv") as f:
+    csv_python = csv.reader(f)
+
+    for row in csv_python:
+        print("{} is in {} and has ip {}".format(row[0],row[2],row[1]))

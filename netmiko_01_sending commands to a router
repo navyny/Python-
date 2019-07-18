@@ -9,7 +9,7 @@ password = 'naveen'
 device = ConnectHandler(device_type=platform, ip=host, username=username, password=password)
 
 print (device.is_alive())
-
+print (device.config_mode())
 print (dir(device))
 
 

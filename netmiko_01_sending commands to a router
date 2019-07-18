@@ -1,0 +1,20 @@
+from netmiko import ConnectHandler
+
+
+platform = 'cisco_ios'
+host = '10.1.50.1'
+username = 'vallabhanenin'
+password = 'naveen'
+
+device = ConnectHandler(device_type=platform, ip=host, username=username, password=password)
+
+print (device.is_alive())
+
+print (dir(device))
+
+
+output = device.send_command('show version | inc register')
+
+output2 = device.send_command('ping 8.8.8.8')
+
+print(output2)

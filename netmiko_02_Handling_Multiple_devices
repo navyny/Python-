@@ -1,0 +1,26 @@
+import json
+import netmiko
+
+#docstring is a blob of text inbetween ''' or """"
+
+devices = '''
+10.1.50.1
+10.1.50.6
+'''.strip().splitlines()
+
+device_type='cisco_ios'
+username='admin'
+password='Cisco123'
+
+netmiko_exceptions=(netmiko.ssh_exception.NetMikoTimeoutException,
+                    netmiko.ssh_exception.NetMikoAuthenticationException)
+
+for device in devices:
+    try:
+        print('~'*79)
+        print('Connecting to device', device)
+        connection=netmiko.ConnectHandler(ip=device,device_type=device_type, username=username, password=password)
+        print(connection.send_command('show clock'))
+        connection.disconnect()
+    except netmiko_exceptions as e:
+        print('Failed to connect to',device, e)

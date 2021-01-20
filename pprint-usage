@@ -1,0 +1,5 @@
+```
+import pprint
+pprint.pprint(json.loads(response.text))
+pprint.pprint(dictionary_name)
+```

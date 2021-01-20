@@ -1,0 +1,7 @@
+```
+import base64
+userpass = root + ':' + password
+encoded_u = base64.b64encode(userpass.encode()).decode()
+headers = {"Authorization" : "Basic %s" % encoded_u}
+print(headers)
+```

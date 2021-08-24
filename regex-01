@@ -1,0 +1,38 @@
+```
+import re
+file = open("data.txt")
+data = file.read()
+#print(data2)
+
+res = re.findall(r"-\s+-\s+.+ (\d+) [i|?]", data)
+result = len(res)
+print(result)
+
+"""
+for each in result:
+    print ("sh ip bgp regex " +each+"$" + " vrf external | wc -l")
+"""
+
+from collections import Counter
+myres=Counter(res)
+print(myres)
+
+file.close()
+```
+
+
+Data is in this format:
+* >     1.0.4.0/22             27.111.228.74         0       -       -       4826 38803 i
+         1.0.4.0/22             27.111.228.81         0       -       -       6939 4826 38803 i
+ * >     1.0.4.0/24             27.111.228.74         0       -       -       4826 38803 i
+         1.0.4.0/24             27.111.228.81         0       -       -       6939 4826 38803 i
+
+In "-\s+-\s+.+ (\d+) [i|?]":
+
+-looks for first dash
+\s+ spaces
+-second dash
+\s+.+spaces & digits
+(\d+) capture what we want in output
+space
+[i|?] look for i or question mark
